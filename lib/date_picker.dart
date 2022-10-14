@@ -3191,7 +3191,7 @@ class _InputDatePickerFormFieldState extends State<InputDatePickerFormField> {
         textEditingValue = textEditingValue.copyWith(
             selection: TextSelection(
           baseOffset: 0,
-          extentOffset: _inputText!.length,
+          extentOffset: 0,
         ));
         _autoSelected = true;
       }
@@ -3205,6 +3205,9 @@ class _InputDatePickerFormFieldState extends State<InputDatePickerFormField> {
   DateTime? _parseDate(String? text) {
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
+    if (text != null) {
+      text = text.replaceAll('-', '0');
+    }
     return localizations.parseCompactDate(text);
   }
 
