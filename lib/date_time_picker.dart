@@ -4,6 +4,7 @@
 
 library date_time_picker;
 
+import 'package:date_time_picker/date_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -237,6 +238,7 @@ class DateTimePicker extends FormField<String> {
             final state = field as _DateTimePickerState;
 
             void onChangedHandler(String value) {
+              print('onChange');
               if (onChanged != null) {
                 onChanged(value);
               }
@@ -705,7 +707,7 @@ class _DateTimePickerState extends FormFieldState<String> {
   }
 
   Future<void> _showDatePickerDialog() async {
-    final ldDatePicked = await showDatePicker(
+    final ldDatePicked = await showCustomDatePicker(
       context: context,
       initialDate: _dDate,
       firstDate: widget.firstDate ?? DateTime.now(),
